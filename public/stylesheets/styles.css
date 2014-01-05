@@ -384,7 +384,6 @@ aside h1, aside h4 {
 
 .post-body {
 	position: relative;
-	max-height: 600px;
 }
 .first {
 	position: relative;
@@ -396,6 +395,7 @@ aside h1, aside h4 {
   overflow-y: scroll;
   border: 1px solid rgb(220,220,220);
   margin-bottom: 15px;
+  background: rgb(240,240,240);
 }
 .second {
 	width: 670px; 
