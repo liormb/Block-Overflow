@@ -50,7 +50,9 @@
     		<%= 
     			total_comments = @post.comments.count
     			case total_comments
-    				when 0 then "Be the first one to leave a comment"
+    				when 0
+    				 @user ? "#{@user.first_name}, " : "Sign in and "
+    				  + "be the first one to leave a comment"
     				when 1 then "#{total_comments} Comment"
     				else "#{total_comments} Comments"
     			end

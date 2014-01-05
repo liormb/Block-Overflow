@@ -30,7 +30,7 @@
 		    	<%= MyCodeRay.prep(post.body[0..410] + "...") %>
 		    </div>
 
-		    <% if request.base_url == "http://blogjunky.herokuapp.com" %>
+		    <% if request.base_url == "http://blogjunky.herokuapp.com" #http://localhost:4567 %>
 		    	<a class="button-to-link note orange" href="/posts/view/<%= post.id %>">Read More</a>
 		    <% end %>
 
