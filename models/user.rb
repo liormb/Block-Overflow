@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
 	# create new user
 	def self.create_new_user(params)
 		user = User.new
-		user.first_name = params[:first_name].strip
-		user.last_name  = params[:last_name].strip
+		user.first_name = params[:first_name].capitalize.strip
+		user.last_name  = params[:last_name].capitalize.strip
 		user.username   = params[:username].strip
 		user.password   = params[:password]
 
