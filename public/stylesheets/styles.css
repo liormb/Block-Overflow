@@ -36,13 +36,13 @@ body {
 	position: relative;
 	max-width: 1180px;
 	margin: 0 auto;
-	min-height: 800px;
 }
 #header-container {
 	background: rgb(41,44,47);
 	border-bottom: 6px solid rgb(219,131,53);
 }
 #page {
+	min-height: 800px;
 	margin: 25px auto;
 }
 #main {
