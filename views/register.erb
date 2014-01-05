@@ -1,0 +1,17 @@
+<div class="modal active-view register">
+	<h1><span>block overflow</span>Registeration</h1>
+	<a href="/" class="close-modal">Close</a>
+	<form action="/users/register" method="post" enctype='multipart/form-data' multipart="true">
+		<fieldset>
+			<input type="text" name="first_name" placeholder="First name" autofocus>
+			<input type="text" name="last_name" placeholder="Last name">
+			<input type="text" name="username" placeholder="Username">
+			<input type="password" name="password" placeholder="Password">
+			<input type="password" name="conform_password" placeholder="Retype Password">
+		</fieldset>
+		<fieldset class="file-load">
+			<input type="file" name="image" accept="image/*">
+		</fieldset>
+		<button class="special" type="submit">Register</button>
+	</form>
+</div><!-- modal -->

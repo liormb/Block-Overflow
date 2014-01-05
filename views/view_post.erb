@@ -1,0 +1,107 @@
+<div id="main" class="clearfix">
+		<div class="block_overflow post view-post">
+			<section class="post-header clearfix">
+				<div class="post-information">
+	    		<h1><%= @post.title %></h1>
+	    		<ul>
+	    			<li>Posted by <span class="orange"><%= User.created_by(@user, @post.user_id) %></span></li>
+	    			<li class="orange"><%= Post.how_many_comments(@post.id) %></li>
+	    			<li class="orange"><%= @post.likes.count %> Likes</li>
+	    		</ul>
+				</div>
+				<div class="post-user-image clearfix">
+					<img src="<%= User.image(@post.user_id) %>" title="<%= User.fullname(@post.user_id) %>">
+				</div>
+			</section>
+
+			<p class="right-side note light-gray">Created at <%= Post.full_date(@post.id) %></p>
+			
+	    <section class="post-body">
+	    	<%= MyCodeRay.prep(@post.body) %>
+	    </section>
+
+	    <p class="right-side note light-gray">Updated at <%= Post.full_date(@post.id, "updated_at") %></p>
+
+	    <section class="post-options">
+				<ul>
+					<% if @user %>
+						<li>
+							<form action="/likes/add" method="post">
+					    	<input type="hidden" name="user_id" value="<%= @user.id %>">
+					    	<input type="hidden" name="post_id" value="<%= @post.id %>">
+					    	<button class="text-button note orange" type="submit"><%= Post.like_status(@post, @user.id) %></button>
+					    </form>
+						</li>
+					<% end %>
+
+					<li><a class="text-button" href="#">share</a></li>
+
+					<% if @user %> 
+						<% if @user.id == @post.user_id %>
+							<li><a class="text-button" href="/posts/edit/<%= @post.id %>">edit</a></li>
+							<li><a class="text-button" href="/posts/delete/<%= @post.id %>">delete</a></li>
+						<% end %>
+					<% end %>
+
+				</ul>
+	    </section>
+			
+    	<h4 class="total-comments dark-gray note">
+    		<%= 
+    			total_comments = @post.comments.count
+    			case total_comments
+    				when 0 then "Be the first one to leave a comment"
+    				when 1 then "#{total_comments} Comment"
+    				else "#{total_comments} Comments"
+    			end
+    		%>
+    	</h4>
+
+			<% @post.comments.each do |comment| %>
+				
+				<section class="comment <%= if @user then "light-green-bg" if @user.id == comment.user_id end %> clearfix">
+					<div class="comment-user-image">
+						<img src="<%= User.image(comment.user_id) %>" title="<%= User.fullname(comment.user_id) %>">
+					</div>
+					<div class="comment-content">
+						<p class="note orange">Commented by <%= User.created_by(@user, comment.user_id) %></p>
+						<p class="note orange"><%= Comment.time_passed(comment.id) %></p>
+						<p><%= comment.body %></p>
+					</div>
+
+					<% if @user %>
+						<div class="comment-options">
+							<ul>
+								<% if @user.id == comment.user_id %><li><a class="text-button" href="#">edit</a></li><% end %>
+								<% if @user.id == @post.user_id || @user.id == comment.user_id %><li><a class="text-button" href="/comments/delete/<%= comment.id %>">delete</a></li><% end %>
+							</ul>
+							<ul>
+								<li>
+									<form action="/likes/add" method="post">
+						    		<input type="hidden" name="user_id" value="<%= @user.id %>">
+						    		<input type="hidden" name="post_id" value="<%= @post.id %>">
+						    		<input type="hidden" name="comment_id" value="<%= comment.id %>">
+						    		<button class="text-button orange" type="submit"><%= Comment.like_status(comment, @user.id) %></button>
+						    	</form>
+								</li>
+								<li><p class="note orange"><%= comment.likes.count %></p></li>
+								<li><img src="/images/like_icon.png" width="25" height="25" title="<%= comment.likes.count %> likes"></li>
+							</ul>
+						</div>
+					<% end %>
+
+	    	</section>
+			<% end %>
+
+			<% if @user %>
+		    <form action="/comments/add" method="post">
+		    	<input type="hidden" name="user_id" value="<%= @user.id %>">
+		    	<input type="hidden" name="post_id" value="<%= @post.id %>">
+		    	<textarea class="add-comment-area" type="text" name="body" placeholder="Add comment..."></textarea>
+		    	<label class="note light-gray">Enter no more than 255 characters</label>
+		    	<button class="add-comment-button text-button note orange" type="submit">Add Comment</button>
+		    </form>
+		  <% end %>
+
+		</div>
+</div>

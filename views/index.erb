@@ -1,0 +1,54 @@
+<div id="main" class="clearfix">
+
+	<% if @key_words %>
+		<section class="search-result">
+			<div>
+				<h1><span class="blue">Found <%= @posts.total_entries %> result for:</span> <%= @key_words.join(", ") %></h1>
+			</div>
+		</section>
+	<% end %>
+
+	<section class="posts">
+		<% @posts.each do |post| %>
+			<div class="block_overflow post">
+				<div class="post-header clearfix">
+					<div class="post-date clearfix">
+						<p class="month"><%= Date::MONTHNAMES[post.created_at.month][0..2] %></p>
+						<p class="day"><%= post.created_at.day %></p>
+					</div>
+					<div class="post-information clearfix">
+		    		<h1><a href="/posts/view/<%= post.id %>"><%= post.title %></a></h1>
+		    		<ul>
+							<li>Posted by <span class="orange"><%= User.created_by(@user, post.user_id) %></span></li>
+							<li class="orange"><%= Post.how_many_comments(post.id) %></li>
+							<li class="orange"><%= post.likes.count %> Likes</li>
+						</ul>
+					</div>
+				</div>
+
+		    <div class="post-body">
+		    	<%= MyCodeRay.prep(post.body[0..410] + "...") %>
+		    </div>
+
+		    <% if request.base_url == "http://localhost:4567" %>
+		    	<a class="button-to-link note orange" href="/posts/view/<%= post.id %>">Read More</a>
+		    <% end %>
+
+			</div><!-- post -->
+		<% end %>
+
+		<% if @posts.empty? %>
+			<div class="block_overflow post empty-search">
+				<h1>Sorry, you're looking for something that isn't there</h1>
+				<h3>Try to make a new search for something else.</h3>
+			</div>
+		<% end %>
+
+		<% if !will_paginate(@posts).nil? %>
+			<div class="pagination">
+				<%= will_paginate @posts unless @posts.empty? %>
+			</div>
+		<% end %>
+	</section><!-- posts -->
+	
+</div>

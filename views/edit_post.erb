@@ -1,0 +1,32 @@
+<div id="main" class="clearfix">
+		<div class="block_overflow post edit-post">
+
+			<form action="/posts/edit/<%= @post.id %>" method="post">
+				<input type="hidden" name="post_id" value="<%= @post.id %>">
+
+				<section class="post-header">
+					<div class="post-information align-bottom clearfix">
+		    		<h1><input class="edit-post-title" type="text" name="title" value="<%= @post.title %>"></h1>
+		    		<ul>
+		    			<li>Posted by <span class="orange"><%= User.fullname(@post.user_id) %></span></li>
+		    			<li class="orange"><%= Post.how_many_comments(@post.id) %></li>
+		    			<li class="orange"><%= @post.likes.count %> Likes</li>
+		    		</ul>
+					</div>
+					<div class="post-user-image clearfix">
+						<img src="<%= User.image(@post.user_id) %>" title="<%= User.fullname(@post.user_id) %>">
+					</div>
+				</section>
+				
+		    <section class="post-body">
+		    	<textarea class="edit-post-body" name="body" wrap='off'><%= @post.body %></textarea>
+		    </section>
+
+		    <section class="post-options">
+					<input class="orange-button" type="submit" value="Save Changes">
+		    </section>
+
+			</form>
+
+		</div><!-- block_overflow -->
+</div><!-- main -->

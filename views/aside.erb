@@ -1,0 +1,48 @@
+<aside class="clearfix">
+
+	<section class="search">
+		<form action="/" method="get">
+			<fieldset>
+				<input type="text" name="search" placeholder="Search...">
+				<button type="submit">Search</button>
+			</fieldset>
+		</form>
+	</section>
+
+	<section class="signin-login">
+		<h1><%= @user ? "Welcome #{User.fullname(@user.id)}" : "Sign In and get connected!" %></h1>
+	</section>
+
+	<%
+		aside_sections = [
+			["Most Popular", "popular-post", Post.popular_posts(4)], 
+			["Recently Updated", "updated-post", Post.updated_posts(3)],
+			["Most Active", "active-post", Post.active_posts(4)]
+		]
+		aside_sections.each do |section|
+			if !section[2].empty?
+	%>
+		<section class="sorted-section <%= section[1] + "s" %>">
+			<h1><%= section[0] %></h1>
+			<% section[2].each do |post_id| %>
+				<% post = Post.find(post_id) %>
+				<div class="vertical-wrapper">
+					<div class="vertical-container <%= section[1] %>">
+						<div class="sorted-container">
+							<h4><a href="/posts/view/<%= post.id %>"><%= post.title %></a></h4>
+							<ul>
+								<li>Posted by <span class="orange"><%= User.created_by(@user, post.user_id) %></span></li>
+								<li><%= Post.how_many_comments(post.id) %></li>
+								<li><%= post.likes.count %> Likes</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</section>
+	<%
+			end
+		end
+	%>
+
+</aside><!-- aside -->

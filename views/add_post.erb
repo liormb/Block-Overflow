@@ -1,0 +1,27 @@
+<div id="main" class="clearfix">
+		<div class="block_overflow post edit-post">
+
+			<form action="/posts/add" method="post">
+				<input type="hidden" name="user_id" value="<%= @user.id %>">
+
+				<section class="post-header publish-header">
+					<div class="post-information align-bottom clearfix">
+						<h1><input class="edit-post-title" type="text" name="title" placeholder="Title" autofocus><br></h1>
+					</div>
+					<div class="post-user-image clearfix">
+						<img src="<%= User.image(@user.id) %>" title="<%= User.fullname(@user.id) %>">
+					</div>
+				</section>
+				
+		    <section class="post-body">
+		    	<textarea class="edit-post-body publish-body" name="body" placeholder="Your post..." wrap='off'></textarea>
+		    </section>
+
+		    <section class="post-options">
+					<input class="orange-button" type="submit" value="Publish">
+		    </section>
+
+			</form>
+
+		</div><!-- block_overflow -->
+</div><!-- main -->

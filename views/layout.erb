@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1">
+	<title>Block Overflow</title>
+	<link rel="stylesheet" href="/stylesheets/main.css">
+	<link rel="stylesheet" href="/stylesheets/buttons.css">
+</head>
+<body>
+	<div id="page-wrapper"<%= " class='deactive-view'" if @login_page || @register_page %>>
+		<div id="header-container">
+			<header>
+				<a id="logo" href="/">Block Overflow</a>
+				<ul>
+					<% if @user %>
+						<li class="new-post-link"><a href="/post/add">New Post</a></li>
+						<li><a href="/users/logout">Log Out</a></li>
+					<% else %>
+						<li><a href="/users/login">Log In</a></li>
+						<li><a href="/users/register">Sign Up</a></li>
+					<% end %>
+				</ul>
+			</header>
+		</div><!-- header-container -->
+
+		<div id="page-container">
+			<div id="page" class="clearfix">
+				<%= yield %>
+				<%= @aside %>
+			</div>
+		</div><!-- main-container -->
+
+		<div id="footer-container">
+			<footer>
+				<p>Copyright &#169; <%= Time.new.year %> Lior Elrom. All rights reserved.</p>
+			</footer>
+		</div><!-- footer-container -->
+	</div><!-- page-wraper -->
+	
+	<%= if @login_page then @login_page end %>
+	<%= if @register_page then @register_page end %>
+</body>
+</html>
