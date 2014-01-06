@@ -25,6 +25,16 @@
 		</div><!-- header-container -->
 
 		<div id="page-container">
+		
+			<section id="main-search" class="search">
+				<form action="/" method="get">
+					<fieldset>
+						<input type="text" name="search" placeholder="Search...">
+						<button type="submit">Search</button>
+					</fieldset>
+				</form>
+			</section>
+
 			<div id="page" class="clearfix">
 				<%= yield %>
 				<%= @aside %>
