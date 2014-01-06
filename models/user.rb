@@ -66,6 +66,6 @@ class User < ActiveRecord::Base
 	# if yes, return its path else return the placeholder path
 	def self.image(owner_user_id)
 		url = self.find(owner_user_id).image
-		return url.nil? ? '/public/image_placeholder.jpg' : url
+		return url.nil? ? '/public/images/image_placeholder.jpg' : url
 	end
 end
