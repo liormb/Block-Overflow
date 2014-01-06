@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
 
 		if !params[:image].nil?
 			user.image = '/uploads/' + user.username + '.' + params['image'][:type].match(/\/(.*)$/).captures.first
-			File.open('public' + user.image, "wb") do |f|
+			# File.open('public' + user.image, "wb") do |f|
+			File.open(user.image, "wb") do |f|
 		    f.write open(params['image'][:tempfile]).read
 		  end
 		end
@@ -66,6 +67,6 @@ class User < ActiveRecord::Base
 	# if yes, return its path else return the placeholder path
 	def self.image(owner_user_id)
 		url = self.find(owner_user_id).image
-		return url.nil? ? '/public/images/image_placeholder.jpg' : url
+		return url.nil? ? '/images/image_placeholder.jpg' : url
 	end
 end
