@@ -4,7 +4,16 @@ class MyCodeRay
 
 	# Setting the valid tags
 	def self.valid_tags
-		["ruby","html","css","haml","java","js","json","php","python","sass","sql","xml","yaml","c","c++","diff"]
+		["ruby","html","css","haml","java","javascript","json","php","python","sass","sql","xml","yaml","c","c++","diff"]
+	end
+
+	# scanning the user tag and changing it to all lower case
+	def self.fixing_user_tag(str, tag)
+		open_tag = "<" + tag + ">"
+		close_tag = "</" + tag + ">"
+		str.scan(/#{open_tag}/i).each { |user_tag| str = str.sub(user_tag, open_tag) }
+		str.scan(/#{close_tag}/i).each { |user_tag| str = str.sub(user_tag, close_tag) }
+		return str
 	end
 
 	# 1. replacing valid tags to <code>'s tags
@@ -87,7 +96,10 @@ class MyCodeRay
 	# prepering the user's input to be presented 
 	def self.prep(str)
 		post = str
-		self.valid_tags.each { |tag| post = self.coderay_prep(post,tag) }
+		self.valid_tags.each do |tag| 
+			post = self.fixing_user_tag(post, tag)
+			post = self.coderay_prep(post,tag)
+		end
 		self.removing_code_tags(self.xmp_tags(post))
 	end
 end
