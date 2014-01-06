@@ -784,7 +784,7 @@ textarea.publish-body {
 
 /* general page settings */
 section:not(.post-body):not(.post-options),
-aside, .edit-post {
+aside, .edit-post, .view-post {
 	border-radius: 6px;
 }
 aside section h1 {
