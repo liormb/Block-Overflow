@@ -17,6 +17,11 @@ NewStand combind from 5 models:
 * [Comment](https://github.com/liormb/BlockOverflow/blob/master/models/comment.rb): managing a post's comments placted by  users
 * [Like](https://github.com/liormb/BlockOverflow/blob/master/models/like.rb): allowing users to like a post or a comment
 
+
+##Features
+####BlockOverflow is using few features like [Will_Paginate](https://github.com/mislav/will_paginate) that allows to paginate between the pages and [CodeRay](http://coderay.rubychan.de) that gives a different colors and few other features to the code.
+
+
 ##Screenshots
 
 ![Example2](/public/images/image2.png)
@@ -30,9 +35,6 @@ NewStand combind from 5 models:
 
 ![Example3](/public/images/image5.png)
 #####Add new public posts and share it with other users
-
-##Features
-####BlockOverflow is using few features like [Will_Paginate](https://github.com/mislav/will_paginate) that allows to paginate between the pages and [CodeRay](http://coderay.rubychan.de) that gives a different colors and few other features to the code.
 
 
 ##Explore BlockOverflow at:
