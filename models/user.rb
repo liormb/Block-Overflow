@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
 		if !params[:image].nil?
 			user.image = '/uploads/' + user.username + '.' + params['image'][:type].match(/\/(.*)$/).captures.first
-			# File.open('public' + user.image, "wb") do |f|
+			# File.open('public' + user.image, "wb") do  # working on localhost
 			File.open(user.image, "wb") do |f|
 		    f.write open(params['image'][:tempfile]).read
 		  end
