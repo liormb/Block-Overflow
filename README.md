@@ -4,14 +4,15 @@ By [Lior Elrom](http://liormb.com/).
 ##A Sinatra open sourse social blog application
 
 
-####Allows a user to post plain text mixed with programming code in many formats, adds comments and be social by liking other's post and comments.
+####Allows a user to post plain text mixed with programming code in many formats.
+####BlockOverflow is a social application that allow a user to be social by adding comments and likes to other users posts and comments.
 
 ####With BlockOverflow you can write code in many computer's languages:
 #####C, C++, Clojure, CSS, Delphi, diff, ERB, Go, Groovy, HAML, HTML, Java, JavaScript, JSON, Lua, PHP, Python, Ruby, Sass, SQL, Taskpaper, XML and YAML
 
 ####BlockOverflow allows you to mix any desired code with plain text.
 
-NewStand combind from 5 models:
+BlockOverflow is combind from 5 models:
 * [User](https://github.com/liormb/BlockOverflow/blob/master/models/user.rb): authenticate new and existing user
 * [Post](https://github.com/liormb/BlockOverflow/blob/master/models/post.rb): handeling the user's posts
 * [Comment](https://github.com/liormb/BlockOverflow/blob/master/models/comment.rb): managing a post's comments placted by  users
