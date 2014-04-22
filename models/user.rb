@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 			 params[:username].nil?   || 
 			 params[:password].nil?   ||
 			 params[:password] != params[:conform_password] ||
-			 !User.find_by_username(params[:username]).nil? ||
+			 !User.find_by_username(params[:username]).nil?
 		 	   validation = false
 		 else
 		 		 # File.size(params[:image][:tempfile]) > 100000 # check for file size
