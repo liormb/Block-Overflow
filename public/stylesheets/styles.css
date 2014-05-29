@@ -26,7 +26,7 @@ body {
    color: rgb(255,255,255);
 }
 footer {
-	height: 100px;
+	height: 60px;
 }
 
 /* page containers */
@@ -42,11 +42,14 @@ footer {
 	margin: 0 auto;
 }
 #header-container {
+	position: fixed;
+	top: 0;
 	background: rgb(61,61,61);
+	z-index: 999;
 }
 #page {
 	min-height: 800px;
-	margin: 50px auto 25px;
+	margin: 110px auto 25px;
 }
 #main {
 	position: relative;
@@ -88,6 +91,8 @@ header li > a {
 	color: rgb(160,160,160);
 	margin-right: 30px;
 	color: rgb(240,240,240);
+	text-transform: uppercase;
+	font-size: 14px;
 	-webkit-transition: all 0.4s;
 	-moz-transition: all 0.4s;
 	-o-transition: all 0.4s;
@@ -121,7 +126,7 @@ aside section:last-child {
 	margin-bottom: 0;
 }
 #footer-container {
-	background: rgb(61,61,61);
+	background: rgb(220,220,220);
 	margin-top: 50px;
 }
 footer p {
@@ -129,7 +134,7 @@ footer p {
 	top: 12px;
 	font-size: 12px;
 	text-align: right;
-	color: rgb(230,230,230);
+	color: rgb(80,80,80);
 }
 
 /* search bar */
@@ -868,7 +873,7 @@ aside section h1 {
 	#page { margin: 25px auto; }
 	header, #page-container, footer { max-width: 752px; margin: 0 auto; }
 	#page-wrapper { overflow: hidden; }
-	#page-container { margin: 30px auto; }
+	#page-container { margin: 85px auto 0; }
 	#main-search { display: block; width: 690px; padding: 30px; background: white; border: 1px solid rgb(220,220,220); }
 	#main-search input[type=text] { width: 630px; }
 	header ul { margin-right: 0; }
