@@ -4,15 +4,6 @@
 		<section class="search-result">
 			<div>
 				<h1><span class="blue">Found <%= @posts.total_entries %> result for:</span> <%= @key_words.join(", ") %></h1>
-				<!-- <form action="/sort" method="post">
-					<select name="sort" onchange="this.form.submit()">
-						<option value="">Sorting by</option>
-						<option value="name">Published (newest to oldest)</option>
-						<option value="name">Published (oldest to newest)</option>
-						<option value="breed">Updated (newest to oldest)</option>
-						<option value="breed">Updated (oldest to newest)</option>
-					</select>
-				</form> -->
 			</div>
 		</section>
 	<% end %>
